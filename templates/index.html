@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+</head>
+
+<body>
+    <header>
+        <h1 id="header">Speech-To-Text</h1>
+    </header>
+    <p class="intro">
+        Welcome, this website is using Python SpeechRecognition software. To transcript your audio, you must use a WAV
+        audio
+        file. If your audio file is in mp3 format, you can use
+        <a href="https://audio.online-convert.com/convert-to-wav" target="_blank"
+            aria-label="link to mp3 to WAV converter">Online-Convert.com</a>
+        to convert your current audio into WAV format.
+    </p>
+    <div id="speechContainer">
+        <form method="post" id="fileForm" enctype="multipart/form-data">
+            <h2 id="inputText">Upload New File: </h2>
+            <input type="file" name="file" id="file" class="inputfile" />
+            <label for="file"> Choose a file</label>
+            <br>
+            <input type="submit" id="sumbitButton" value="Transcribe" />
+        </form>
+        {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1 id="transcriptTitle">Transcript</h1>
+            <div class="center ">
+                <p id="speechText">{{transcript}}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
